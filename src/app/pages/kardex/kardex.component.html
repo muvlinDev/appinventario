@@ -1,0 +1,98 @@
+<div class="row col-sm-12">
+<div class="card col-sm-6 kardex mt-2">
+    <div class="card-body">
+        <form [formGroup] = "kardexForm">
+            <div class="form-group col-sm-12">
+                <label for="producto">Producto</label>
+                <select id="producto" class="form-control" formControlName="producto">
+                    <option value="">Seleccione...</option>
+                    <option *ngFor="let p of productos | async" value="{{p.id}}">{{p.codigo}} - {{p.comercial}} | {{p.generico}}</option>
+                </select>
+            </div>
+            <div class="col-sm-12 text-center">
+                <button type="button" class="btn btn-success mt-4 " id="generar" data-toggle="modal" data-target="#kardexModal" (click)="generarKardex()">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="buscando"></span>
+                    Generar Kardex
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="kardexModal" tabindex="-1" aria-labelledby="kardexModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="kardexModalLabel">KARDEX DEL PRODUCTO</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeButtonForm>
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        Codigo:
+                    </div>
+                    <div class="col-sm-5">
+                        {{producto.codigo}}
+                    </div>
+                    <div class="col-sm-4">
+                        <span class="badge badge-dark">{{producto.categoria}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        Nombre genérico:
+                    </div>
+                    <div class="col-sm-6">
+                        {{producto.generico}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        Nombre comercial:
+                    </div>
+                    <div class="col-sm-6">
+                        {{producto.comercial}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        Presentación:
+                    </div>
+                    <div class="col-sm-5">
+                        {{producto.presentacion}} ({{producto.contenido}})
+                    </div>
+                    <div class="col-sm-4">
+                        <span class="badge badge-info">Laboratorio {{producto.laboratorio}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Descripción</th>
+                        <th>Entrada</th>
+                        <th>Salida</th>
+                        <th>Saldo</th>
+                    </tr>
+                </thead>
+                <tr *ngFor="let k of kardex">
+                    <td>{{k.fecha}}</td>
+                    <td>{{k.descripcion}}</td>
+                    <td>{{k.entrada}}</td>
+                    <td>{{k.salida}}</td>
+                    <td>{{k.saldo}}</td>
+                </tr>
+            </table>
+          </div>
+        </div>
+  
+    </div>
+</div>

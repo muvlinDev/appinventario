@@ -1,0 +1,11 @@
+<ng-container *ngIf="router.url == '/login'">
+    <router-outlet></router-outlet>
+</ng-container>
+
+<ng-container *ngIf="router.url != '/login'">
+    <app-header></app-header>
+    <div class="container-fluid">
+        <router-outlet></router-outlet>
+    </div>
+    <app-footer></app-footer>
+</ng-container>

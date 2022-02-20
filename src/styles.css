@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr';
+
+.details-table{
+    font-size: small;
+}
+.icono-logo {
+    height: 60px;
+}
+.overflow-table {
+    display: block;
+    width: 100%;
+    height: 100px;
+    overflow-y: auto;
+}
+.form-check-label {
+    margin-top: 0.1rem;
+}
+.bar-color {
+    background: #4B79A1;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #283E51, #4B79A1);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #283E51, #4B79A1); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #ffffff;
+}
+.ftr {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.container-fluid {
+    margin-bottom: 48px !important;
+}
+.kardex {
+    margin: 0 auto;
+}
+.login-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: #4B79A1;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #283E51, #4B79A1);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #283E51, #4B79A1); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #ffffff;
+
+  }

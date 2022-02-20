@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-dark bar-color">
+    <a class="navbar-brand" href="#"><img src="../../../assets/images/salud_icono.png" class="icono-logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/inicio"><i class="fas fa-home"></i> Inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ml-3" routerLinkActive="active">
+          <a class="nav-link" routerLink="/productos"><i class="fas fa-first-aid"></i> Productos</a>
+        </li>
+        <li class="nav-item ml-3" routerLinkActive="active">
+          <a class="nav-link" routerLink="/compras"><i class="fas fa-shopping-bag"></i> Compras</a>
+        </li>
+        <li class="nav-item ml-3" routerLinkActive="active">
+          <a class="nav-link" routerLink="/ventas"><i class="fas fa-money-check-alt"></i> Ventas</a>
+        </li>
+        <li class="nav-item ml-3" routerLinkActive="active">
+          <a class="nav-link" routerLink="/inventario"><i class="fas fa-book-medical"></i> Inventario</a>
+        </li>
+        <li class="nav-item ml-3" routerLinkActive="active">
+          <a class="nav-link" routerLink="/kardex"><i class="fas fa-book"></i> Kardex</a>
+        </li>
+      </ul>
+
+      <span class="navbar-text">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user"></i> {{email}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <button class="dropdown-item" (click)="logout()">Cerrar sesión</button>
+          </div>
+        </li>
+      </span>
+    </div>
+  </nav>

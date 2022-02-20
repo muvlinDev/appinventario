@@ -1,0 +1,122 @@
+
+<h1>Listado de Productos</h1>
+<button type="button" class="btn btn-sm btn-success mb-1" data-toggle="modal" data-target="#productoModal" (click)="newModal()">Nuevo</button>
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">CODIGO</th>
+        <th scope="col">NOMBRE GENÉRICO</th>
+        <th scope="col">NOMBRE COMERCIAL</th>
+        <th scope="col">LABORATORIO</th>
+        <th scope="col">CATEGORIA</th>
+        <th scope="col">COSTO</th>
+        <th scope="col">OPCIONES</th>
+      </tr>
+    </thead>
+    <tbody class="details-table">
+      <tr *ngFor = "let prod of productos | async">
+        <td>{{prod.codigo}}</td>
+        <td>{{prod.generico}}</td>
+        <td>{{prod.comercial}}</td>
+        <td>{{prod.laboratorio}}</td>
+        <td><span class="badge badge-dark">{{prod.categoria}}</span></td>
+        <td><span *ngIf="prod.precio">{{prod.precio}} Bs.</span></td>
+        <td>
+          <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#productoModal" (click)="openModal(prod.id)">Detalles</button>
+          <button type="button" class="btn btn-sm btn-danger ml-1" (click)="deleteProducto(prod.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Modal -->
+<div class="modal fade" id="productoModal" tabindex="-1" aria-labelledby="productoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="productoModalLabel">Registrar producto</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" #closeButtonForm>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup] = "productoForm" (ngSubmit)="saveProducto()" autocomplete="off"> 
+            <div class="modal-body details-table">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="form-group col-sm-6">
+                      <label for="codigo">Codigo</label>
+                      <input type="text" class="form-control" id="codigo" oninput="this.value = this.value.toUpperCase()" formControlName="codigo">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="generico">Nombre genérico</label>
+                    <input type="text" class="form-control" id="nombre" oninput="this.value = this.value.toUpperCase()" formControlName="generico">
+                  </div>
+                  <div class="form-group">
+                    <label for="comercial">Nombre comercial</label>
+                    <input type="text" class="form-control" id="descripcion" oninput="this.value = this.value.toUpperCase()" formControlName="comercial">
+                  </div>
+                </div>
+              </div>
+              <div class="card mt-1">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="form-group col-sm-6">
+                      <label for="laboratorio">Laboratorio</label>
+                      <select class="form-control" id="laboratorio" formControlName="laboratorio">
+                        <option value="">Seleccione...</option>
+                        <option *ngFor="let l of laboratorios | async" value="{{l.nombre}}">{{l.nombre}}</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-sm-6">
+                      <label for="categoria">Categoría</label>
+                      <select class="form-control" id="codigo" formControlName="categoria">
+                        <option value="">Seleccione...</option>
+                        <option *ngFor="let c of categorias | async" value="{{c.descripcion}}">{{c.descripcion}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mt-1">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="form-group col-sm-6">
+                      <label for="composicion">Composición</label>
+                      <input type="text" class="form-control" id="codigo" oninput="this.value = this.value.toUpperCase()" formControlName="composicion">
+                    </div>
+                    <div class="form-group col-sm-6">
+                      <label for="contenido">Contenido</label>
+                      <input type="text" class="form-control" id="codigo" oninput="this.value = this.value.toUpperCase()" formControlName="contenido">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-sm-6">
+                      <label for="presentacion">Presentación</label>
+                      <input type="text" class="form-control" id="codigo" oninput="this.value = this.value.toUpperCase()" formControlName="presentacion">
+                    </div>
+                    <div class="form-group col-sm-6">
+                      <label for="cliente">Presentación al cliente</label>
+                      <input type="text" class="form-control" id="codigo" oninput="this.value = this.value.toUpperCase()" formControlName="cliente">
+                    </div>
+                  </div>
+                  <!--div class="row">
+                    <div class="form-group col-sm-6">
+                      <label for="costo">Costo</label>
+                      <input type="number" class="form-control" id="codigo" formControlName="costo">
+                    </div>
+                  </div-->
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  
