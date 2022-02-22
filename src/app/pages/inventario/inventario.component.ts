@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AuthService } from './../../auth/auth.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { InventarioService } from 'src/app/service/inventario.service';
 import { Observable } from 'rxjs';
 import { Inventario } from 'src/app/interfaces/inventario';
@@ -8,7 +9,7 @@ import { Inventario } from 'src/app/interfaces/inventario';
   templateUrl: './inventario.component.html',
   styleUrls: ['./inventario.component.css']
 })
-export class InventarioComponent implements OnInit {
+export class InventarioComponent implements OnInit, OnDestroy {
 
   productos: Observable<any[]>;
   compras: Observable<any[]>;
@@ -17,7 +18,8 @@ export class InventarioComponent implements OnInit {
   sumatoriaCompras = 0;
   sumatoriaVentas = 0;
 
-  constructor( private _inventario: InventarioService ) { 
+  constructor( private _inventario: InventarioService,
+               private _auth: AuthService ) { 
     this.productos = _inventario.getProductos();
     this.compras = _inventario.getCompras();
     this.ventas = _inventario.getVentas();
@@ -25,6 +27,14 @@ export class InventarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this._auth.getStatus() === 'refresh') {
+      window.location.reload();
+      this._auth.saveStatus('inv-ready');
+    }
+  }
+
+  ngOnDestroy(): void {
+    this._auth.saveStatus('refresh');
   }
 
   calcularInventario() {
@@ -78,6 +88,6 @@ export class InventarioComponent implements OnInit {
         inv.categoria = prod.categoria;
         inv.stock = scomp - svent;
         this.inventario.push(inv);
-    }, 400);
+    }, 100);
   }
 }

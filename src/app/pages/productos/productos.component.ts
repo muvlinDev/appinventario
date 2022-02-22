@@ -34,8 +34,7 @@ export class ProductosComponent implements OnInit {
       composicion: ['', Validators.required],
       contenido: ['', Validators.required],
       presentacion: ['', Validators.required],
-      cliente: ['', Validators.required],
-      costo: ['', Validators.required],
+      cliente: ['', Validators.required]
     })
     this.productos = _inventario.getProductos();
     this.laboratorios = _inventario.getLaboratorios();
@@ -68,8 +67,7 @@ export class ProductosComponent implements OnInit {
             composicion: [this.producto.composicion, Validators.required],
             contenido: [this.producto.contenido, Validators.required],
             presentacion: [this.producto.contenido, Validators.required],
-            cliente: [this.producto.cliente, Validators.required],
-            costo: [this.producto.costo, Validators.required],
+            cliente: [this.producto.cliente, Validators.required]
           })
         }
       })

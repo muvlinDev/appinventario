@@ -23,4 +23,12 @@ export class AuthService {
   clearLocalStorage() {
     localStorage.clear();
   }
+
+  getStatus() {
+    return localStorage.getItem('status');
+  }
+
+  saveStatus(status: string) {
+    localStorage.setItem('status', status);
+  }
 }

@@ -31,10 +31,10 @@ export class InventarioService {
     return this.firestore.collection('ventas', ref => ref.orderBy('orden', 'desc')).valueChanges();
   }
   getComprasProducto(id: string): Observable<any[]> {
-    return this.firestore.collection('compras', ref => ref.where('id', '==', id).orderBy('fecha', 'desc')).valueChanges();
+    return this.firestore.collection('compras', ref => ref.where('id', '==', id).orderBy('fecha', 'desc')).snapshotChanges();
   }
   getVentasProducto(id: string): Observable<any[]> {
-    return this.firestore.collection('ventas', ref => ref.where('id', '==', id).orderBy('fecha', 'desc')).valueChanges();
+    return this.firestore.collection('ventas', ref => ref.where('id', '==', id).orderBy('fecha', 'desc')).snapshotChanges();
   }
 
 
