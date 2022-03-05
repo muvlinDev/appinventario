@@ -1,3 +1,4 @@
+import { ParametricasComponent } from './pages/parametricas/parametricas.component';
 import { LoginComponent } from './auth/login/login.component';
 import { KardexComponent } from './pages/kardex/kardex.component';
 import { NgModule } from '@angular/core';
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'kardex',
     component: KardexComponent
+  },
+  {
+    path: 'parametricas',
+    component: ParametricasComponent
   },
   {
     path: '**', pathMatch: 'full', redirectTo: 'login'

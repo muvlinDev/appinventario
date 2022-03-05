@@ -21,6 +21,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { KardexComponent } from './pages/kardex/kardex.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { ParametricasComponent } from './pages/parametricas/parametricas.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAkI6dae6Ln360lcQiSmIhH5rGkvavkQWM",
@@ -44,7 +45,8 @@ const firebaseConfig = {
     InventarioComponent,
     FooterComponent,
     KardexComponent,
-    LoginComponent
+    LoginComponent,
+    ParametricasComponent
   ],
   imports: [
     BrowserModule,

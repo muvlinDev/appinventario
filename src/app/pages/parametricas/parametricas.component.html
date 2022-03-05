@@ -1,0 +1,84 @@
+<div class="row">
+    <div class="card col-md-6">
+        <div class="card-body">
+            <h1>Categorias</h1>
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup] = "categoriaForm" autocomplete="off"> 
+                        <div class="row">
+                            <div class="form-group col-sm-12">
+                                <label for="descripcion">{{labelAccion}}</label>
+                                <input type="text" class="form-control" id="descripcion" oninput="this.value = this.value.toUpperCase()" formControlName="descripcion">
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" class="btn btn-success btn-sm saveButton" (click)="saveCategoria()">Guardar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="table-responsive mt-2">
+                <table class="table">
+                    <thead class="thead">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">CATEGORIA</th>
+                            <th scope="col">OPCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody class="details-table">
+                        <tr *ngFor = "let i = index, let cat of categorias | async">
+                            <td>{{i+1}}</td>
+                            <td>{{cat.descripcion}}</td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-danger ml-1" (click)="deleteCategoria(cat.id)">Eliminar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> 
+        </div>
+    </div>
+
+    <div class="card col-sm-6">
+        <div class="card-body">
+            <h1>Laboratorios</h1>
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup] = "laboratorioForm" autocomplete="off"> 
+                        <div class="row">
+                            <div class="form-group col-sm-12">
+                                <label for="nombre">{{labelLaboratorio}}</label>
+                                <input type="text" class="form-control" id="nombre" oninput="this.value = this.value.toUpperCase()" formControlName="nombre">
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" class="btn btn-success btn-sm saveButton" (click)="saveLaboratorio()">Guardar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="table-responsive mt-2">
+                <table class="table">
+                    <thead class="thead">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">LABORATORIO</th>
+                            <th scope="col">OPCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody class="details-table">
+                        <tr *ngFor = "let i = index, let lab of laboratorios | async">
+                            <td>{{i+1}}</td>
+                            <td>{{lab.nombre}}</td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-danger ml-1" (click)="deleteLaboratorio(lab.id)">Eliminar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> 
+        </div>
+    </div>
+</div>
+

@@ -13,7 +13,7 @@ export class InventarioService {
     return this.firestore.collection('laboratorios', ref => ref.orderBy('nombre')).valueChanges({idField: 'id'});
   }
   getCategorias(): Observable<any[]> {
-    return this.firestore.collection('categoria', ref => ref.orderBy('descripcion')).valueChanges();
+    return this.firestore.collection('categoria', ref => ref.orderBy('descripcion')).valueChanges({idField: 'id'});
   }
   getProductos(): Observable<any[]> {
     return this.firestore.collection('productos', ref => ref.orderBy('generico')).valueChanges({idField: 'id'});
@@ -57,6 +57,12 @@ export class InventarioService {
   saveVenta(form: any) {
     this.firestore.collection('ventas').add(form);
   }
+  saveCategoria(form: any) {
+    this.firestore.collection('categoria').add(form);
+  }
+  saveLaboratorio(form: any) {
+    this.firestore.collection('laboratorios').add(form);
+  }
 
   updateProducto(id: string, form:any) {
     this.firestore.collection('productos').doc(id).update(form);
@@ -70,5 +76,11 @@ export class InventarioService {
   }
   deleteVenta(id: string) {
     this.firestore.collection('ventas').doc(id).delete();
+  }
+  deleteCategoria(id: string) {
+    this.firestore.collection('categoria').doc(id).delete();
+  }
+  deleteLaboratorio(id: string) {
+    this.firestore.collection('laboratorios').doc(id).delete();
   }
 }
