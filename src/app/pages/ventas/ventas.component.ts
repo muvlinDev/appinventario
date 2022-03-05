@@ -112,4 +112,9 @@ export class VentasComponent implements OnInit {
   getFecha(timestamp: any){
     return this._utils.getDateFromTimestamp(timestamp);
   }
+
+  deleteVenta(id: string) {
+    this._inventario.deleteVenta(id);
+    this.toastr.success('Venta eliminada correctamente', 'Operación exitosa');
+  }
 }

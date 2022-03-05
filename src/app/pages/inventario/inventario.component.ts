@@ -38,8 +38,6 @@ export class InventarioComponent implements OnInit, OnDestroy {
   }
 
   calcularInventario() {
-    console.log('calculado inventario');
-    
     this.productos.forEach(prod => {
       for (var i = 0; i < prod.length; i++) {
         //this.sumatorias(prod[i].codigo);
@@ -61,13 +59,15 @@ export class InventarioComponent implements OnInit, OnDestroy {
   sumatorias(prod: any) {
     this.sumatoriaCompras = 0;
     this.sumatoriaVentas = 0;
-
+    
     var scomp = 0;
     var svent = 0;
+    
     this.compras.forEach(comp => {
       for (var i = 0; i<comp.length; i++) {
         if (comp[i].codigo === prod.codigo) {
           scomp += comp[i].cantidad;
+          
         }
       }
     });
@@ -88,6 +88,6 @@ export class InventarioComponent implements OnInit, OnDestroy {
         inv.categoria = prod.categoria;
         inv.stock = scomp - svent;
         this.inventario.push(inv);
-    }, 100);
+    }, 1000);
   }
 }

@@ -115,4 +115,9 @@ export class ComprasComponent implements OnInit {
   getFecha(timestamp: any){
     return this._utils.getDateFromTimestamp(timestamp);
   }
+
+  deleteCompra(id: string) {
+    this._inventario.deleteCompra(id);
+    this.toastr.success('Compra eliminada correctamente', 'Operación exitosa');
+  }
 }

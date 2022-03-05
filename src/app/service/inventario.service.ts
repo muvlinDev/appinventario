@@ -22,13 +22,13 @@ export class InventarioService {
     return this.firestore.collection('compras-cabecera').valueChanges();
   }
   getCompras(): Observable<any[]> {
-    return this.firestore.collection('compras', ref => ref.orderBy('orden', 'desc')).valueChanges();
+    return this.firestore.collection('compras', ref => ref.orderBy('orden', 'desc')).valueChanges({idField: 'id'});
   }
   getVentasCabecera(): Observable<any[]> {
     return this.firestore.collection('ventas-cabecera').valueChanges();
   }
   getVentas(): Observable<any[]> {
-    return this.firestore.collection('ventas', ref => ref.orderBy('orden', 'desc')).valueChanges();
+    return this.firestore.collection('ventas', ref => ref.orderBy('orden', 'desc')).valueChanges({idField: 'id'});
   }
   getComprasProducto(id: string): Observable<any[]> {
     return this.firestore.collection('compras', ref => ref.where('id', '==', id).orderBy('fecha', 'desc')).snapshotChanges();
@@ -69,6 +69,6 @@ export class InventarioService {
     this.firestore.collection('compras').doc(id).delete();
   }
   deleteVenta(id: string) {
-    this.firestore.collection('venas').doc(id).delete();
+    this.firestore.collection('ventas').doc(id).delete();
   }
 }

@@ -15,7 +15,7 @@
         <th scope="col">PRECIO</th>
         <th scope="col">CANTIDAD</th>
         <th scope="col">TOTAL</th>
-        <!--<th scope="col">OPCIONES</th>-->
+        <th scope="col">OPCIONES</th>
       </tr>
     </thead>
     <tbody class="details-table">
@@ -32,9 +32,9 @@
         <td>{{c.precio}} Bs.</td>
         <td>{{c.cantidad}}</td>
         <td>{{c.total}} Bs.</td>
-        <!--<td>
-          <button type="button" class="btn btn-sm btn-danger ml-1" >Eliminar</button>
-        </td>-->
+        <td>
+          <button type="button" class="btn btn-sm btn-danger ml-1" (click)="deleteCompra(c.id)">Eliminar</button>
+        </td>
       </tr>
     </tbody>
   </table>
